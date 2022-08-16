@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:pomodoro/app/utils/tipo_intervalo.dart';
 
 part 'pomodoro_store.g.dart';
 
@@ -17,6 +18,9 @@ abstract class _PomodoroStoreBase with Store {
   int tempoTrabalho = 2;
   @observable
   int tempoDescanso = 1;
+
+  @observable
+  TipoIntervalo tipoIntervalo = TipoIntervalo.DESCANSO;
 
   @action
   void iniciar() {
@@ -51,5 +55,13 @@ abstract class _PomodoroStoreBase with Store {
   @action
   void decrementarTempoDescanso() {
     tempoDescanso--;
+  }
+
+  TipoIntervalo estaTrabalhando() {
+    return tipoIntervalo = TipoIntervalo.TRABALHO;
+  }
+
+  TipoIntervalo estaDescansando() {
+    return tipoIntervalo = TipoIntervalo.DESCANSO;
   }
 }

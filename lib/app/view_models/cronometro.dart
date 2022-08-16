@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:pomodoro/app/utils/tipo_intervalo.dart';
 import 'package:provider/provider.dart';
 
 import 'package:pomodoro/app/controller/pomodoro_store.dart';
@@ -13,13 +14,17 @@ class Cronometro extends StatelessWidget {
     final _store = Provider.of<PomodoroStore>(context);
 
     return Container(
-      color: Colors.red[800],
+      color: _store.tipoIntervalo == TipoIntervalo.TRABALHO
+          ? Colors.red[800]
+          : Colors.green[800],
       child: Observer(
         builder: (_) => Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Hora de Trabalhar',
+              _store.tipoIntervalo == TipoIntervalo.TRABALHO
+                  ? 'Hora de Trabalhar'
+                  : 'Hora de Descansar',
               style: TextStyle(
                 fontSize: 40,
                 color: Colors.white,
