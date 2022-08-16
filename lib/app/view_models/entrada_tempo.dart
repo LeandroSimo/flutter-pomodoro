@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/view_models/entrada_botao.dart';
 
 class EntradaTempo extends StatelessWidget {
   final String titulo;
@@ -23,36 +24,14 @@ class EntradaTempo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: Icon(
-                Icons.arrow_downward,
-                color: Colors.white,
-              ),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(15),
-                primary: Colors.red[800],
-              ),
-            ),
+            EntradaBotao(icone: Icons.arrow_downward),
             Text(
               '$valor min',
               style: const TextStyle(
                 fontSize: 18,
               ),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Icon(
-                Icons.arrow_upward,
-                color: Colors.white,
-              ),
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(15),
-                primary: Colors.red[800],
-              ),
-            ),
+            EntradaBotao(icone: Icons.arrow_upward),
           ],
         ),
       ],
