@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import 'package:pomodoro/app/controller/pomodoro_store.dart';
@@ -13,38 +14,53 @@ class Cronometro extends StatelessWidget {
 
     return Container(
       color: Colors.red[800],
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Hora de Trabalhar',
-            style: TextStyle(
-              fontSize: 40,
-              color: Colors.white,
+      child: Observer(
+        builder: (_) => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Hora de Trabalhar',
+              style: TextStyle(
+                fontSize: 40,
+                color: Colors.white,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            '25:00',
-            style: TextStyle(
-              fontSize: 120,
-              color: Colors.white,
+            SizedBox(
+              height: 20,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CronometroBotao(texto: 'Iniciar', icone: Icons.play_arrow),
-              // CronometroBotao(texto: 'Stop', icone: Icons.stop),
-              CronometroBotao(texto: 'Reiniciar', icone: Icons.refresh),
-            ],
-          )
-        ],
+            Text(
+              '${_store.minutos.toString().padLeft(2, '0')}:${_store.segundos.toString().padLeft(2, '0')}',
+              style: TextStyle(
+                fontSize: 120,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                !_store.iniciado
+                    ? CronometroBotao(
+                        func: _store.iniciar,
+                        texto: 'Iniciar',
+                        icone: Icons.play_arrow,
+                      )
+                    : CronometroBotao(
+                        func: _store.parar,
+                        texto: 'Stop',
+                        icone: Icons.stop,
+                      ),
+                CronometroBotao(
+                  func: _store.reiniciar,
+                  texto: 'Reiniciar',
+                  icone: Icons.refresh,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
