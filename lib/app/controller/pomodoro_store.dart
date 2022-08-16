@@ -29,7 +29,7 @@ abstract class _PomodoroStoreBase with Store {
   @action
   void iniciar() {
     iniciado = true;
-    cronometro = Timer.periodic(Duration(milliseconds: 30), (timer) {
+    cronometro = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (minutos == 0 && segundos == 0) {
         _trocaTipoDeIntervalo();
       } else if (segundos == 0) {
@@ -50,26 +50,46 @@ abstract class _PomodoroStoreBase with Store {
   @action
   void reiniciar() {
     parar();
+    minutos =
+        tipoIntervalo == TipoIntervalo.TRABALHO ? tempoTrabalho : tempoDescanso;
+    segundos = 0;
   }
 
   @action
   void incrementarTempoTrabalho() {
-    tempoTrabalho += 5;
+    tempoTrabalho++;
+    if (tipoIntervalo == TipoIntervalo.TRABALHO) {
+      reiniciar();
+    }
   }
 
   @action
   void decrementarTempoTrabalho() {
-    tempoTrabalho--;
+    if (tempoTrabalho > 1) {
+      tempoTrabalho--;
+    }
+
+    if (tipoIntervalo == TipoIntervalo.TRABALHO) {
+      reiniciar();
+    }
   }
 
   @action
   void incrementarTempoDescanso() {
     tempoDescanso++;
+    if (tipoIntervalo == TipoIntervalo.DESCANSO) {
+      reiniciar();
+    }
   }
 
   @action
   void decrementarTempoDescanso() {
-    tempoDescanso--;
+    if (tempoDescanso > 1) {
+      tempoDescanso--;
+    }
+    if (tipoIntervalo == TipoIntervalo.DESCANSO) {
+      reiniciar();
+    }
   }
 
   void _trocaTipoDeIntervalo() {

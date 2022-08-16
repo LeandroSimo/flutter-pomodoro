@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/app/controller/pomodoro_store.dart';
 
 import 'package:pomodoro/app/view_models/entrada_botao.dart';
+import 'package:provider/provider.dart';
 
 class EntradaTempo extends StatelessWidget {
   final String titulo;
   final int valor;
-  final void Function() inc;
-  final void Function() dec;
+  final void Function()? inc;
+  final void Function()? dec;
 
   const EntradaTempo({
     Key? key,
     required this.titulo,
     required this.valor,
-    required this.inc,
-    required this.dec,
+    this.inc,
+    this.dec,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<PomodoroStore>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [

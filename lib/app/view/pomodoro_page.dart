@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:pomodoro/app/utils/tipo_intervalo.dart';
 import 'package:provider/provider.dart';
 
 import 'package:pomodoro/app/controller/pomodoro_store.dart';
@@ -29,14 +30,26 @@ class _PomodoroState extends State<Pomodoro> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   EntradaTempo(
-                    dec: _store.decrementarTempoTrabalho,
-                    inc: _store.incrementarTempoTrabalho,
+                    dec: _store.iniciado &&
+                            _store.tipoIntervalo == TipoIntervalo.TRABALHO
+                        ? null
+                        : _store.decrementarTempoTrabalho,
+                    inc: _store.iniciado &&
+                            _store.tipoIntervalo == TipoIntervalo.TRABALHO
+                        ? null
+                        : _store.incrementarTempoTrabalho,
                     titulo: 'Trabalho',
                     valor: _store.tempoTrabalho,
                   ),
                   EntradaTempo(
-                    dec: _store.decrementarTempoDescanso,
-                    inc: _store.incrementarTempoDescanso,
+                    dec: _store.iniciado &&
+                            _store.tipoIntervalo == TipoIntervalo.DESCANSO
+                        ? null
+                        : _store.decrementarTempoDescanso,
+                    inc: _store.iniciado &&
+                            _store.tipoIntervalo == TipoIntervalo.DESCANSO
+                        ? null
+                        : _store.incrementarTempoDescanso,
                     titulo: 'Descanso',
                     valor: _store.tempoDescanso,
                   ),

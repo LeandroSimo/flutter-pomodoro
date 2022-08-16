@@ -7,11 +7,11 @@ import 'package:pomodoro/app/controller/pomodoro_store.dart';
 
 class EntradaBotao extends StatelessWidget {
   final IconData icone;
-  final void Function() func;
+  final void Function()? func;
   const EntradaBotao({
     Key? key,
     required this.icone,
-    required this.func,
+    this.func,
   }) : super(key: key);
 
   @override
