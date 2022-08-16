@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:pomodoro/app/controller/pomodoro_store.dart';
 import 'package:pomodoro/app/view_models/cronometro_botao.dart';
 
 class Cronometro extends StatelessWidget {
@@ -6,6 +9,8 @@ class Cronometro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _store = Provider.of<PomodoroStore>(context);
+
     return Container(
       color: Colors.red[800],
       child: Column(
