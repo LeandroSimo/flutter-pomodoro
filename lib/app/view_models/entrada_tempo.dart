@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+
 import 'package:pomodoro/app/view_models/entrada_botao.dart';
 
 class EntradaTempo extends StatelessWidget {
   final String titulo;
   final int valor;
-  EntradaTempo({Key? key, required this.titulo, required this.valor})
-      : super(key: key);
+  final void Function() inc;
+  final void Function() dec;
+
+  const EntradaTempo({
+    Key? key,
+    required this.titulo,
+    required this.valor,
+    required this.inc,
+    required this.dec,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +33,20 @@ class EntradaTempo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            EntradaBotao(icone: Icons.arrow_downward),
+            EntradaBotao(
+              func: dec,
+              icone: Icons.arrow_downward,
+            ),
             Text(
               '$valor min',
               style: const TextStyle(
                 fontSize: 18,
               ),
             ),
-            EntradaBotao(icone: Icons.arrow_upward),
+            EntradaBotao(
+              func: inc,
+              icone: Icons.arrow_upward,
+            ),
           ],
         ),
       ],

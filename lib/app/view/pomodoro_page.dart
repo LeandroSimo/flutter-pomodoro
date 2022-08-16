@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
 import 'package:pomodoro/app/controller/pomodoro_store.dart';
@@ -23,18 +24,24 @@ class _PomodoroState extends State<Pomodoro> {
           Expanded(child: Cronometro()),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                EntradaTempo(
-                  titulo: 'Trabalho',
-                  valor: _store.tempoTrabalho,
-                ),
-                EntradaTempo(
-                  titulo: 'Descanso',
-                  valor: _store.tempoDescanso,
-                ),
-              ],
+            child: Observer(
+              builder: (_) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  EntradaTempo(
+                    dec: _store.decrementarTempoTrabalho,
+                    inc: _store.incrementarTempoTrabalho,
+                    titulo: 'Trabalho',
+                    valor: _store.tempoTrabalho,
+                  ),
+                  EntradaTempo(
+                    dec: _store.decrementarTempoDescanso,
+                    inc: _store.incrementarTempoDescanso,
+                    titulo: 'Descanso',
+                    valor: _store.tempoDescanso,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
