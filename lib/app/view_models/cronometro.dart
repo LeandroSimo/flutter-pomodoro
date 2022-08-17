@@ -15,9 +15,12 @@ class Cronometro extends StatelessWidget {
 
     return Observer(
       builder: (_) => Container(
-        color: _store.tipoIntervalo == TipoIntervalo.TRABALHO
-            ? Colors.red[800]
-            : Colors.green[800],
+        decoration: BoxDecoration(
+            color: _store.tipoIntervalo == TipoIntervalo.TRABALHO
+                ? Colors.red[800]
+                : Colors.green[800],
+            borderRadius:
+                const BorderRadius.vertical(bottom: Radius.circular(50))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
