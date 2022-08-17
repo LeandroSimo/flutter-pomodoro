@@ -1,16 +1,54 @@
-# pomodoro
+<h1 align="center">
+Pomodoro
+</h1>
+<br>
+<p align="center">
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#information_source-como-executar">Como executar</a>&nbsp;&nbsp;&nbsp;
+</p>
+<br>
 
-A new Flutter project.
+<p align="center">
+  <img alt="App screen" src="https://user-images.githubusercontent.com/56087579/185016909-854f4d0b-904b-448d-9a3b-d59a91d65603.gif" width="300px">
+</p>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## 💻 Projeto
 
-A few resources to get you started if this is your first Flutter project:
+Projeto desenvolvido com base no curso da Cod3r.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## :rocket: Tecnologias
+
+Esse app foi desevolvido com as seguintes tecnologias:
+- [Flutter][flutter]
+- [Dart][dart]
+- [Mobx][mobx]
+- [Provider][provider]
+
+## :information_source: Como executar
+
+Para clonar e executar esse app você precisará do [Git](https://git-scm.com) + [Flutter][flutter] instalados no seu computador.
+
+### Clone e execute 
+
+```bash
+# Clone esse repositório
+$ git clone https://github.com/LeandroSimo/flutter-pomodoro.git
+
+# Entre no repositório
+$ cd flutter-pomodoro
+
+# Instale as dependências
+$ flutter pub get
+
+# Execute
+$ flutter run
+
+```
+
+[flutter]: https://flutter.dev/
+[dart]: https://dart.dev/
+[mobx]: https://pub.dev/packages/mobx
+[provider]: https://pub.dev/packages/provider
